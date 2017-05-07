@@ -42,8 +42,11 @@
     self.locationManager.delegate = self;
     [self.locationManager requestAlwaysAuthorization];
     self.locationManager.pausesLocationUpdatesAutomatically = NO;
+    self.locationManager.distanceFilter = kCLLocationAccuracyThreeKilometers;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
     if ([CLLocationManager locationServicesEnabled]) {
         self.locationManager.allowsBackgroundLocationUpdates = YES;
+        [self.locationManager startUpdatingLocation];
     }
 
 }
