@@ -72,22 +72,8 @@
 {
     NSMutableDictionary *values = [[NSMutableDictionary alloc] init];
     [values setValue:[NSNumber numberWithBool:camera.isStreaming] forKey:@"is_streaming"];
-    //[values setValue:[NSNumber numberWithInteger:thermostat.targetTemperatureF] forKey:TARGET_TEMPERATURE_F];
-    //[values setValue:[NSNumber numberWithBool:thermostat.fanTimerActive] forKey:FAN_TIMER_ACTIVE];
-    
-    [[FirebaseManager sharedManager] setValues:values forURL:[NSString stringWithFormat:@"%@/%@/", CAMERA_PATH, camera.cameraId]];
-    
-//    // IMPORTANT to set withLocalEvents to NO
-//    // Read more here: https://www.firebase.com/docs/transactions.html
-//    [self.fireBase runTransactionBlock:^FTransactionResult *(FMutableData *currentData) {
-//        [currentData setValue:values];
-//        return [FTransactionResult successWithValue:currentData];
-//    } andCompletionBlock:^(NSError *error, BOOL committed, FDataSnapshot *snapshot) {
-//        if (error) {
-//            NSLog(@"Error: %@", error);
-//        }
-//    } withLocalEvents:NO];
 
+    [[FirebaseManager sharedManager] setValues:values forURL:[NSString stringWithFormat:@"%@/%@/", CAMERA_PATH, camera.cameraId]];
 }
 
 

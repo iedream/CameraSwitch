@@ -15,10 +15,9 @@
  */
 
 #import "NestConnectViewController.h"
-#import "UIColor+Custom.h"
 #import "NestAuthManager.h"
 #import "NestWebViewAuthController.h"
-#import "ViewController.h"
+#import "MasterViewController.h"
 
 @interface NestConnectViewController () <NestWebViewAuthControllerDelegate>
 
@@ -113,7 +112,7 @@
 - (void)checkForAccessToken:(NSTimer *)sender
 {
     if ([[NestAuthManager sharedManager] isValidSession]) {
-        ViewController *vc = [[ViewController alloc] init];
+        MasterViewController *vc = [[MasterViewController alloc] init];
         [self presentViewController:vc animated:YES completion:nil];
         [self invalidateTimer];
     }

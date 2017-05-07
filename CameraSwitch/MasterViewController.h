@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NestStructureManager.h"
+#import "NestCameraManager.h"
+#import <CoreLocation/CoreLocation.h>
+#import "DetailViewController.h"
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController <IndividualDelegate, NestStructureManagerDelegate, NestCameraManagerDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
-
+@property (nonatomic, weak) id <GeneralDelegate>delegate;
 
 @end
 
