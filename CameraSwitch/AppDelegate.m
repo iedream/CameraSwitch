@@ -17,10 +17,10 @@
 @implementation AppDelegate
 
 // Replace this with your Nest Client ID (see https://developer.nest.com)
-NSString * const NestClientID = @"c1cbcf71-8c5a-4f6f-9fb7-21ed78ea41c5";
+NSString * const NestClientID = @"f97add9e-1e82-482a-a2c1-94623f16b57d";
 
 // Replace this with your Nest Client Secret (see https://developer.nest.com)
-NSString * const NestClientSecret = @"uL72QANmD0SAATmwPMN6JoXcB";
+NSString * const NestClientSecret = @"Q8H1se9yy2OPQRtykn9C9xdJz";
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -67,7 +67,7 @@ NSString * const NestClientSecret = @"uL72QANmD0SAATmwPMN6JoXcB";
 #pragma mark - Split view
 
 - (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
-    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[DetailViewController class]] && ([(DetailViewController *)[(UINavigationController *)secondaryViewController topViewController] camera] == nil)) {
+    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[DetailViewController class]]) {
         // Return YES to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
         return YES;
     } else {

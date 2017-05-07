@@ -16,13 +16,22 @@
 @property (weak, nonatomic) IBOutlet UITableView *beaconTable;
 @property (strong, nonatomic) NSMutableArray *iBeaconArray;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *proximitySegmentControl;
+@property (strong, nonatomic) NSDictionary *settings;
+@property (strong, nonatomic) Camera *camera;
+@property (strong, nonatomic) NSTimer *cameraStateDisabledTimer;
+@property (nonatomic) BOOL cameraStateSwitchDisabled;
 @end
 
 @implementation DetailViewController
 
 - (void)configureView {
     // Update the user interface for the detail item.
-    _isOnSwitch.on = _camera.isStreaming;
+    if (!_cameraStateSwitchDisabled) {
+        _isOnSwitch.on = _camera.isStreaming;
+        NSLog(@"updating");
+    }else {
+        NSLog(@"not updating");
+    }
     NSString *isOnlineLabelText = _camera.isOnline ? @"Online" : @"Offline";
     [_isOnlineLabel setText:isOnlineLabelText];
     NSString *isHomeLabelText = _camera.isHome ? @"Home" : @"Away";
@@ -37,15 +46,29 @@
     self.beaconTable.delegate = self;
     self.beaconTable.dataSource = self;
     [self configureView];
+    [self populateSettingFromPlist];
 }
 
+- (NSDictionary *)getPlistData {
+    NSMutableDictionary *plistData = [[NSMutableDictionary alloc] init];
+    [plistData setValue:_iBeaconArray forKey:@"BeaconArray"];
+    [plistData setValue:[NSNumber numberWithInteger:_proximitySegmentControl.selectedSegmentIndex] forKey:@"ProximitySegmentControl"];
+    return plistData.copy;
+}
+
+- (void)populateSettingFromPlist {
+    NSInteger proximitySetting = [_settings[@"ProximitySegmentControl"] integerValue];
+    NSArray *iBeaconArray = _settings[@"BeaconArray"];
+    _iBeaconArray = [[NSMutableArray alloc] initWithArray:iBeaconArray];
+    [_proximitySegmentControl setSelectedSegmentIndex:proximitySetting];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - CameraUpdatedDelegate Methods
+#pragma mark - CameraValueDelegate Methods
 
 /**
  * Called from NestThermostatManagerDelegate, lets us know thermostat
@@ -63,12 +86,18 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(Camera *)camera {
+- (void)initWithCamera:(Camera *)camera andSetting:(NSDictionary *)settings{
     if (_camera != camera) {
         _camera = camera;
         
         // Update the view.
         [self configureView];
+    }
+    if (_settings != settings) {
+        _settings = settings;
+        
+        // Update the view.
+        [self populateSettingFromPlist];
     }
 }
 
@@ -80,7 +109,11 @@
     }];
     UIAlertAction *submitAction = [UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSString *iBeaconUUID = useiBeacon.textFields.firstObject.text;
-        [self addBeacon:iBeaconUUID];
+        if (![_iBeaconArray containsObject:iBeaconUUID]) {
+            [_iBeaconArray addObject: iBeaconUUID];
+            [self.delegate addBeacon:iBeaconUUID];
+            [self.delegate savePlistSettings:[self getPlistData] forCameraId:_camera.cameraId];
+        }
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     [useiBeacon addAction:submitAction];
@@ -88,44 +121,24 @@
     [self presentViewController:useiBeacon animated:true completion:nil];
 }
 
-- (void)addIBeacon:(NSString *)iBeaconUUID {
-    if (![_iBeaconArray containsObject:iBeaconUUID]) {
-        [_iBeaconArray addObject: iBeaconUUID];
-        [self.delegate addBeacon:iBeaconUUID];
+- (IBAction)segmentValueChanged:(id)sender {
+    if (_proximitySegmentControl) {
+        _proximitySegmentControl = (UISegmentedControl *)sender;
+        [self.delegate savePlistSettings:[self getPlistData] forCameraId:_camera.cameraId];
     }
 }
 
-#pragma mark - MasterDelegate Methods
-
-- (void)enterBeaconRegion:(NSString *)beaconId proximity:(CLProximity)proximity {
-    BOOL isStreaming = _camera.isStreaming;
-    switch (_proximitySegmentControl.selectedSegmentIndex) {
-        case 0:
-            isStreaming = NO;
-            break;
-        case 1:
-            if (proximity != CLProximityFar) {
-                isStreaming = NO;
-            } else {
-                isStreaming = YES;
-            }
-        case 2:
-            if (proximity == CLProximityImmediate) {
-                isStreaming = NO;
-            } else {
-                isStreaming = YES;
-            }
-        default:
-            break;
-    }
-    if (isStreaming != _camera.isStreaming) {
-        [self.delegate setCameraValue:_camera];
-    }
-}
-
-- (void)exitBeaconRegion:(NSString *)beaconId {
-    _camera.isStreaming = YES;
+- (IBAction)cameraStateChanged:(id)sender {
+    _cameraStateSwitchDisabled = YES;
+    _camera.isStreaming = _isOnSwitch.on;
     [self.delegate setCameraValue:_camera];
+    self.cameraStateDisabledTimer =[NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(cameraStateDisabledTimerEnd) userInfo:nil repeats:NO];
+    [[NSRunLoop currentRunLoop] addTimer: self.cameraStateDisabledTimer forMode: NSDefaultRunLoopMode];
+}
+
+- (void)cameraStateDisabledTimerEnd {
+    _cameraStateSwitchDisabled = NO;
+    [self.cameraStateDisabledTimer invalidate];
 }
 
 #pragma mark - Table View
@@ -141,7 +154,8 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    //[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     NSString *iBeaconID = _iBeaconArray[indexPath.row];
     cell.textLabel.text = iBeaconID;

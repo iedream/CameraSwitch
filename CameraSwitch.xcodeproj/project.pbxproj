@@ -22,6 +22,8 @@
 		4F26B6B31EBE87110056E7BF /* NestAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F26B6A91EBE87110056E7BF /* NestAuthManager.m */; };
 		4F26B6B41EBE87110056E7BF /* NestConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F26B6AB1EBE87110056E7BF /* NestConnectViewController.m */; };
 		4F26B6B51EBE87110056E7BF /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F26B6AD1EBE87110056E7BF /* AccessToken.m */; };
+		4F26B6B81EBEBF000056E7BF /* PlistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F26B6B71EBEBF000056E7BF /* PlistManager.m */; };
+		4F26B6BB1EBEE38B0056E7BF /* BeaconRegionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F26B6BA1EBEE38B0056E7BF /* BeaconRegionManager.m */; };
 		B467EC610C60A90FA586FF4A /* libPods-CameraSwitch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BEDE1F70C8BEBCA7F1A1883 /* libPods-CameraSwitch.a */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,10 @@
 		4F26B6AB1EBE87110056E7BF /* NestConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestConnectViewController.m; sourceTree = "<group>"; };
 		4F26B6AC1EBE87110056E7BF /* AccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessToken.h; sourceTree = "<group>"; };
 		4F26B6AD1EBE87110056E7BF /* AccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessToken.m; sourceTree = "<group>"; };
+		4F26B6B61EBEBF000056E7BF /* PlistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistManager.h; sourceTree = "<group>"; };
+		4F26B6B71EBEBF000056E7BF /* PlistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistManager.m; sourceTree = "<group>"; };
+		4F26B6B91EBEE38B0056E7BF /* BeaconRegionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconRegionManager.h; sourceTree = "<group>"; };
+		4F26B6BA1EBEE38B0056E7BF /* BeaconRegionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconRegionManager.m; sourceTree = "<group>"; };
 		6BEDE1F70C8BEBCA7F1A1883 /* libPods-CameraSwitch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CameraSwitch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D2B0B375B9DF4036E9990D /* Pods-CameraSwitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraSwitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CameraSwitch/Pods-CameraSwitch.debug.xcconfig"; sourceTree = "<group>"; };
 		C03AE163674D8379B83DE2D1 /* Pods-CameraSwitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraSwitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-CameraSwitch/Pods-CameraSwitch.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +133,10 @@
 				4F26B6951EBE82FF0056E7BF /* LaunchScreen.storyboard */,
 				4F26B6981EBE82FF0056E7BF /* Info.plist */,
 				4F26B6841EBE82FF0056E7BF /* Supporting Files */,
+				4F26B6B61EBEBF000056E7BF /* PlistManager.h */,
+				4F26B6B71EBEBF000056E7BF /* PlistManager.m */,
+				4F26B6B91EBEE38B0056E7BF /* BeaconRegionManager.h */,
+				4F26B6BA1EBEE38B0056E7BF /* BeaconRegionManager.m */,
 			);
 			path = CameraSwitch;
 			sourceTree = "<group>";
@@ -280,12 +290,14 @@
 				4F26B6B01EBE87110056E7BF /* Camera.m in Sources */,
 				4F26B6B21EBE87110056E7BF /* NestWebViewAuthController.m in Sources */,
 				4F26B6891EBE82FF0056E7BF /* AppDelegate.m in Sources */,
+				4F26B6B81EBEBF000056E7BF /* PlistManager.m in Sources */,
 				4F26B68C1EBE82FF0056E7BF /* MasterViewController.m in Sources */,
 				4F26B6861EBE82FF0056E7BF /* main.m in Sources */,
 				4F26B6AE1EBE87110056E7BF /* NestCameraManager.m in Sources */,
 				4F26B68F1EBE82FF0056E7BF /* DetailViewController.m in Sources */,
 				4F26B6AF1EBE87110056E7BF /* NestStructureManager.m in Sources */,
 				4F26B6B31EBE87110056E7BF /* NestAuthManager.m in Sources */,
+				4F26B6BB1EBEE38B0056E7BF /* BeaconRegionManager.m in Sources */,
 				4F26B6B41EBE87110056E7BF /* NestConnectViewController.m in Sources */,
 				4F26B6B51EBE87110056E7BF /* AccessToken.m in Sources */,
 			);

@@ -57,6 +57,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DEg-TK-IaS">
                                 <rect key="frame" x="122" y="91" width="51" height="31"/>
+                                <connections>
+                                    <action selector="cameraStateChanged:" destination="JEX-9P-axG" eventType="valueChanged" id="8dH-xH-fYO"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Online/Offline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeF-Ls-Jbz">
                                 <rect key="frame" x="122" y="140" width="119" height="21"/>
@@ -96,6 +99,9 @@
                                     <segment title="Near"/>
                                     <segment title="Instant"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentValueChanged:" destination="JEX-9P-axG" eventType="valueChanged" id="uI1-dc-H6w"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -131,7 +137,7 @@
                         <outlet property="isHomeLabel" destination="fvc-Lx-uAa" id="has-rJ-Jwp"/>
                         <outlet property="isOnSwitch" destination="DEg-TK-IaS" id="B2Y-MA-J8N"/>
                         <outlet property="isOnlineLabel" destination="qeF-Ls-Jbz" id="x3T-sy-PuM"/>
-                        <outlet property="proximitySegmentControl" destination="M1a-ei-DId" id="kws-ap-QdV"/>
+                        <outlet property="proximitySegmentControl" destination="M1a-ei-DId" id="jDP-NK-wsN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>

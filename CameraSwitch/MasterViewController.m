@@ -12,6 +12,8 @@
 #import "NestAuthManager.h"
 #import "Camera.h"
 #import <CoreLocation/CoreLocation.h>
+#import "PlistManager.h"
+#import "BeaconRegionManager.h"
 
 @interface MasterViewController ()
 
@@ -20,6 +22,8 @@
 @property NestCameraManager *nestCameraManager;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) PlistManager *plistManager;
+@property (nonatomic, strong) BeaconRegionManager *beaconRegionManager;
 @end
 
 @implementation MasterViewController
@@ -55,6 +59,10 @@
         [self.nestStructureManager initialize];
         self.nestCameraManager = [[NestCameraManager alloc] init];
         [self.nestCameraManager setDelegate:self];
+        self.plistManager = [[PlistManager alloc] init];
+        self.beaconRegionManager = [[BeaconRegionManager alloc] initWithCameras:_cameras];
+        self.beaconDelegate = self.beaconRegionManager;
+        [self.beaconRegionManager setDelegate:self];
     }
 }
 
@@ -69,15 +77,37 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)startMonitoriginBeaconRegions:(NSArray *)cameraArray {
+    for (Camera *camera in cameraArray) {
+        NSDictionary *plistSetting = [self.plistManager readSettingForCameraId:camera.cameraId];
+        NSArray *iBeacons = plistSetting[@"BeaconArray"];
+        for (NSString *iBeaconId in iBeacons) {
+            [self addBeaconRegion:iBeaconId];
+        }
+    }
+}
+
+- (void)addBeaconRegion:(NSString *)beaconId {
+    NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:beaconId];
+    CLBeaconRegion *geoRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:beaconId];
+    geoRegion.notifyEntryStateOnDisplay = YES;
+    geoRegion.notifyOnEntry = YES;
+    geoRegion.notifyOnExit = YES;
+    [self.locationManager startMonitoringForRegion:geoRegion];
+    [self.locationManager startRangingBeaconsInRegion:geoRegion];
+}
+
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         Camera *camera = self.cameras.allValues[indexPath.row];
+        NSDictionary *plistSettings = [self.plistManager readSettingForCameraId:camera.cameraId];
+        
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         controller.navigationItem.title = camera.cameraName;
-        [controller setCamera:camera];
+        [controller initWithCamera:camera andSetting:plistSettings];
         self.delegate = controller;
         controller.delegate = self;
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
@@ -118,6 +148,7 @@
     if ([structure objectForKey:@"cameras"]) {
         NSArray *cameras = [structure objectForKey:@"cameras"];
         [self subscriptionToCamera:cameras];
+        [self startMonitoriginBeaconRegions:cameras];
     }
 }
 
@@ -143,20 +174,46 @@
 
 #pragma mark - BeaconDelegate Methods
 
+- (void)setCameraValue:(Camera *)camera {
+    [self.nestCameraManager saveChangesForCamera:camera];
+}
+
+- (NSDictionary *)getPlistSettingForCameraID:(NSString *)cameraID {
+    return [self.plistManager readSettingForCameraId:cameraID];
+}
+
+#pragma mark - DetailDelegate Methods
+
 -(void)addBeacon:(NSString *)beaconId {
-    NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:beaconId];
-    CLBeaconRegion *geoRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:beaconId];
-    geoRegion.notifyOnEntry = YES;
-    geoRegion.notifyOnExit = YES;
-    [self.locationManager startMonitoringForRegion:geoRegion];
+    [self addBeaconRegion:beaconId];
+}
+
+- (void)savePlistSettings:(NSDictionary *)dict forCameraId:(NSString *)cameraId {
+    [self.plistManager saveSettingChange:dict forCameraId:cameraId];
 }
 
 #pragma mark - iBeaconRegionDelegate Methods
 
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray<CLBeacon *> *)beacons inRegion:(CLBeaconRegion *)region {
     for (CLBeacon *beacon in beacons) {
-        [self.delegate enterBeaconRegion:beacon.proximityUUID.UUIDString proximity:beacon.proximity];
+        [self.beaconDelegate enterBeaconRegion:beacon.proximityUUID.UUIDString proximity:beacon.proximity];
     }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(nullable CLRegion *)region withError:(nonnull NSError *)error {
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(nonnull CLRegion *)region {
+    [self.locationManager requestStateForRegion:region];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(nonnull CLRegion *)region {
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
@@ -167,7 +224,7 @@
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
     CLBeaconRegion *beaconRegion = (CLBeaconRegion *)region;
     [manager stopRangingBeaconsInRegion:beaconRegion];
-    [self.delegate exitBeaconRegion:beaconRegion.proximityUUID.UUIDString];
+    [self.beaconDelegate exitBeaconRegion:beaconRegion.proximityUUID.UUIDString];
 }
 
 

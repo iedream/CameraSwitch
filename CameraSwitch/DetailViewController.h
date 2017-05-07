@@ -11,26 +11,22 @@
 #import "NestCameraManager.h"
 #import <CoreLocation/CoreLocation.h>
 
-@protocol IndividualDelegate <NSObject>
-
+@protocol DetailDelegate <NSObject>
 - (void)addBeacon:(NSString *)beaconId;
+- (void)savePlistSettings:(NSDictionary *)dict forCameraId:(NSString *)cameraId;
 - (void)setCameraValue:(Camera *)camera;
-
 @end
 
-@protocol GeneralDelegate <NSObject>
+@protocol CameraValueDelegate <NSObject>
 
 - (void)cameraValuesChanged:(Camera *)camera;
-- (void)enterBeaconRegion:(NSString *)beaconId proximity:(CLProximity)proximity;
-- (void)exitBeaconRegion:(NSString *)beaconId;
 
 @end
 
-@interface DetailViewController : UIViewController <NestCameraManagerDelegate, GeneralDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface DetailViewController : UIViewController <NestCameraManagerDelegate, CameraValueDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) Camera *camera;
-@property (nonatomic, weak) id <IndividualDelegate> delegate;
-
+@property (nonatomic, weak) id <DetailDelegate> delegate;
+- (void)initWithCamera:(Camera *)camera andSetting:(NSDictionary *)settings;
 
 @end
 
