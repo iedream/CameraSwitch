@@ -39,10 +39,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qer-FY-Pab">
-                                <rect key="frame" x="26" y="481" width="333" height="172"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXa-2J-ErM">
                                 <rect key="frame" x="26" y="96" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -103,26 +99,40 @@
                                     <action selector="segmentValueChanged:" destination="JEX-9P-axG" eventType="valueChanged" id="uI1-dc-H6w"/>
                                 </connections>
                             </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tyu-d2-RdC">
+                                <rect key="frame" x="26" y="465" width="333" height="182"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BeaconCell" id="OuU-i3-47U">
+                                        <rect key="frame" x="0.0" y="28" width="333" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OuU-i3-47U" id="tKm-3m-EIP">
+                                            <rect key="frame" x="0.0" y="0.0" width="333" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="IXa-2J-ErM" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="20" id="0Da-jQ-YRi"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="tyu-d2-RdC" secondAttribute="bottom" constant="20" id="1sC-U1-tsH"/>
                             <constraint firstItem="Tfu-E7-a2M" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="20" id="2Jw-LR-v6O"/>
                             <constraint firstItem="Xg2-iL-eL1" firstAttribute="top" secondItem="Tfu-E7-a2M" secondAttribute="bottom" constant="20" id="3se-gl-YKg"/>
                             <constraint firstItem="fvc-Lx-uAa" firstAttribute="leading" secondItem="Tfu-E7-a2M" secondAttribute="trailing" constant="40" id="7RY-Tp-TKc"/>
                             <constraint firstItem="Geo-mp-Za4" firstAttribute="top" secondItem="IXa-2J-ErM" secondAttribute="bottom" constant="20" id="CND-Fl-Pxa"/>
+                            <constraint firstItem="tyu-d2-RdC" firstAttribute="trailing" secondItem="svH-Pt-448" secondAttribute="trailingMargin" constant="20" id="Cro-NX-uEH"/>
                             <constraint firstItem="Tfu-E7-a2M" firstAttribute="top" secondItem="Geo-mp-Za4" secondAttribute="bottom" constant="20" id="D5h-VF-QwE"/>
                             <constraint firstItem="qeF-Ls-Jbz" firstAttribute="leading" secondItem="fvc-Lx-uAa" secondAttribute="leading" id="EXe-14-khP"/>
                             <constraint firstItem="M1a-ei-DId" firstAttribute="leading" secondItem="fvc-Lx-uAa" secondAttribute="leading" id="FrY-Is-vFZ"/>
                             <constraint firstItem="Geo-mp-Za4" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="20" id="JWE-nN-ZVm"/>
                             <constraint firstItem="fvc-Lx-uAa" firstAttribute="centerY" secondItem="Tfu-E7-a2M" secondAttribute="centerY" id="KcI-5T-SDp"/>
+                            <constraint firstItem="tyu-d2-RdC" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" id="RMU-x3-752"/>
                             <constraint firstItem="qeF-Ls-Jbz" firstAttribute="centerY" secondItem="Geo-mp-Za4" secondAttribute="centerY" id="VFa-99-CgZ"/>
-                            <constraint firstItem="Qer-FY-Pab" firstAttribute="trailing" secondItem="svH-Pt-448" secondAttribute="trailingMargin" constant="20" id="dZW-Ew-JFC"/>
                             <constraint firstItem="DEg-TK-IaS" firstAttribute="leading" secondItem="fvc-Lx-uAa" secondAttribute="leading" id="e1u-bg-RVN"/>
-                            <constraint firstItem="Qer-FY-Pab" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="20" id="fBS-Ve-dYU"/>
-                            <constraint firstItem="Qer-FY-Pab" firstAttribute="top" secondItem="Niw-Aw-ZLC" secondAttribute="bottom" constant="20" id="iLw-1H-BTP"/>
-                            <constraint firstItem="Qer-FY-Pab" firstAttribute="height" secondItem="svH-Pt-448" secondAttribute="height" multiplier="0.25" id="lKY-Tp-hj1"/>
-                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="Qer-FY-Pab" secondAttribute="bottom" constant="20" id="pYv-ap-ltJ"/>
+                            <constraint firstItem="tyu-d2-RdC" firstAttribute="top" secondItem="Niw-Aw-ZLC" secondAttribute="bottom" constant="20" id="hOg-9K-tqY"/>
+                            <constraint firstItem="tyu-d2-RdC" firstAttribute="height" secondItem="svH-Pt-448" secondAttribute="height" multiplier="0.25" id="jTu-cf-uam"/>
                             <constraint firstItem="Niw-Aw-ZLC" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="20" id="uox-a3-FvG"/>
                             <constraint firstItem="DEg-TK-IaS" firstAttribute="centerY" secondItem="IXa-2J-ErM" secondAttribute="centerY" id="vJt-3o-0dG"/>
                             <constraint firstItem="M1a-ei-DId" firstAttribute="centerY" secondItem="Xg2-iL-eL1" secondAttribute="centerY" id="wfy-1A-DGT"/>
@@ -133,7 +143,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="mOI-FS-AaM"/>
                     <connections>
-                        <outlet property="beaconTable" destination="Qer-FY-Pab" id="AdG-R5-gxX"/>
+                        <outlet property="beaconTable" destination="tyu-d2-RdC" id="OEJ-aE-2vO"/>
                         <outlet property="isHomeLabel" destination="fvc-Lx-uAa" id="has-rJ-Jwp"/>
                         <outlet property="isOnSwitch" destination="DEg-TK-IaS" id="B2Y-MA-J8N"/>
                         <outlet property="isOnlineLabel" destination="qeF-Ls-Jbz" id="x3T-sy-PuM"/>
@@ -171,11 +181,11 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

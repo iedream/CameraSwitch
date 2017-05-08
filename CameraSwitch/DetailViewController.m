@@ -13,8 +13,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *isOnSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *isOnlineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *isHomeLabel;
-@property (weak, nonatomic) IBOutlet UITableView *beaconTable;
 @property (strong, nonatomic) NSMutableArray *iBeaconArray;
+@property (weak, nonatomic) IBOutlet UITableView *beaconTable;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *proximitySegmentControl;
 @property (strong, nonatomic) NSDictionary *settings;
 @property (strong, nonatomic) Camera *camera;
@@ -154,9 +154,10 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    //[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BeaconCell" forIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"BeaconCell"];
+    }
     NSString *iBeaconID = _iBeaconArray[indexPath.row];
     cell.textLabel.text = iBeaconID;
     return cell;

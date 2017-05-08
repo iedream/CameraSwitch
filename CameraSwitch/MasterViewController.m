@@ -100,6 +100,13 @@
     [self.locationManager startRangingBeaconsInRegion:geoRegion];
 }
 
+- (void)turnAllCameraOn {
+    for (Camera *camera in _cameras.allValues) {
+        camera.isStreaming = YES;
+        [self.nestCameraManager saveChangesForCamera:camera];
+    }
+}
+
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -198,6 +205,10 @@
 #pragma mark - iBeaconRegionDelegate Methods
 
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray<CLBeacon *> *)beacons inRegion:(CLBeaconRegion *)region {
+    if (beacons.count <= 0) {
+        [self turnAllCameraOn];
+    }
+    
     for (CLBeacon *beacon in beacons) {
         [self.beaconDelegate enterBeaconRegion:beacon.proximityUUID.UUIDString proximity:beacon.proximity];
     }
@@ -211,6 +222,10 @@
     
 }
 
+- (void)enterBeaconRegion:(NSString *)beaconId proximity:(CLProximity)proximity {
+    [self.beaconDelegate enterBeaconRegion:beaconId proximity:proximity];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(nonnull CLRegion *)region {
     [self.locationManager requestStateForRegion:region];
 }
@@ -222,12 +237,14 @@
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
     CLBeaconRegion *beaconRegion = (CLBeaconRegion *)region;
     [manager startRangingBeaconsInRegion:beaconRegion];
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
     CLBeaconRegion *beaconRegion = (CLBeaconRegion *)region;
     [manager stopRangingBeaconsInRegion:beaconRegion];
     [self.beaconDelegate exitBeaconRegion:beaconRegion.proximityUUID.UUIDString];
+    [self.locationManager stopUpdatingLocation];
 }
 
 
