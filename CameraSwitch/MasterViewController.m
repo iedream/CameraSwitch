@@ -41,7 +41,7 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager requestAlwaysAuthorization];
-    self.locationManager.pausesLocationUpdatesAutomatically = NO;
+    //self.locationManager.pausesLocationUpdatesAutomatically = NO;
     self.locationManager.distanceFilter = kCLLocationAccuracyThreeKilometers;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
     if ([CLLocationManager locationServicesEnabled]) {
@@ -231,20 +231,25 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(nonnull CLRegion *)region {
-    
+    if (state == CLRegionStateInside) {
+        //Start Ranging
+        [self.locationManager startRangingBeaconsInRegion:(CLBeaconRegion*) region];
+    }
+    else{
+        //Stop Ranging
+        [self.locationManager stopRangingBeaconsInRegion:(CLBeaconRegion*) region];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
     CLBeaconRegion *beaconRegion = (CLBeaconRegion *)region;
     [manager startRangingBeaconsInRegion:beaconRegion];
-    [self.locationManager startUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
     CLBeaconRegion *beaconRegion = (CLBeaconRegion *)region;
     [manager stopRangingBeaconsInRegion:beaconRegion];
     [self.beaconDelegate exitBeaconRegion:beaconRegion.proximityUUID.UUIDString];
-    [self.locationManager stopUpdatingLocation];
 }
 
 
