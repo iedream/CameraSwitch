@@ -24,8 +24,41 @@
 		4F26B6B51EBE87110056E7BF /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F26B6AD1EBE87110056E7BF /* AccessToken.m */; };
 		4F26B6B81EBEBF000056E7BF /* PlistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F26B6B71EBEBF000056E7BF /* PlistManager.m */; };
 		4F26B6BB1EBEE38B0056E7BF /* BeaconRegionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F26B6BA1EBEE38B0056E7BF /* BeaconRegionManager.m */; };
+		4FAD36521EC15AFC009859C9 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FAD36511EC15AFC009859C9 /* NotificationCenter.framework */; };
+		4FAD36561EC15AFC009859C9 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAD36551EC15AFC009859C9 /* TodayViewController.m */; };
+		4FAD36591EC15AFD009859C9 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FAD36571EC15AFD009859C9 /* MainInterface.storyboard */; };
+		4FAD36641EC15B2F009859C9 /* CameraDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAD36631EC15B2F009859C9 /* CameraDataManager.m */; };
+		4FAD36671EC15B44009859C9 /* CameraData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAD36661EC15B44009859C9 /* CameraData.m */; };
+		4FAD366A1EC16170009859C9 /* CameraDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAD36691EC16170009859C9 /* CameraDataTableViewCell.m */; };
+		4FAD366E1EC16855009859C9 /* WidgesDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAD366D1EC16855009859C9 /* WidgesDataManager.m */; };
+		4FAD36891EC19EDE009859C9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FAD36881EC19EDE009859C9 /* CoreLocation.framework */; };
+		4FAD368E1EC19F17009859C9 /* CameraSwitchWidgets.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4FAD36501EC15AFC009859C9 /* CameraSwitchWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B467EC610C60A90FA586FF4A /* libPods-CameraSwitch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BEDE1F70C8BEBCA7F1A1883 /* libPods-CameraSwitch.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4FAD368F1EC19F17009859C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F26B6791EBE82FF0056E7BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FAD364F1EC15AFC009859C9;
+			remoteInfo = CameraSwitchWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4FAD36911EC19F17009859C9 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4FAD368E1EC19F17009859C9 /* CameraSwitchWidgets.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4F26B6811EBE82FF0056E7BF /* CameraSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +93,23 @@
 		4F26B6B71EBEBF000056E7BF /* PlistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistManager.m; sourceTree = "<group>"; };
 		4F26B6B91EBEE38B0056E7BF /* BeaconRegionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconRegionManager.h; sourceTree = "<group>"; };
 		4F26B6BA1EBEE38B0056E7BF /* BeaconRegionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconRegionManager.m; sourceTree = "<group>"; };
+		4FAD36501EC15AFC009859C9 /* CameraSwitchWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CameraSwitchWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FAD36511EC15AFC009859C9 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		4FAD36541EC15AFC009859C9 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		4FAD36551EC15AFC009859C9 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		4FAD36581EC15AFD009859C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		4FAD365A1EC15AFD009859C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FAD36621EC15B2F009859C9 /* CameraDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraDataManager.h; sourceTree = "<group>"; };
+		4FAD36631EC15B2F009859C9 /* CameraDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraDataManager.m; sourceTree = "<group>"; };
+		4FAD36651EC15B44009859C9 /* CameraData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraData.h; sourceTree = "<group>"; };
+		4FAD36661EC15B44009859C9 /* CameraData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraData.m; sourceTree = "<group>"; };
+		4FAD36681EC16170009859C9 /* CameraDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraDataTableViewCell.h; sourceTree = "<group>"; };
+		4FAD36691EC16170009859C9 /* CameraDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraDataTableViewCell.m; sourceTree = "<group>"; };
+		4FAD366B1EC16790009859C9 /* CameraSwitchWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CameraSwitchWidgets.entitlements; sourceTree = "<group>"; };
+		4FAD366C1EC16855009859C9 /* WidgesDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgesDataManager.h; sourceTree = "<group>"; };
+		4FAD366D1EC16855009859C9 /* WidgesDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WidgesDataManager.m; sourceTree = "<group>"; };
+		4FAD366F1EC170C9009859C9 /* CameraSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CameraSwitch.entitlements; sourceTree = "<group>"; };
+		4FAD36881EC19EDE009859C9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6BEDE1F70C8BEBCA7F1A1883 /* libPods-CameraSwitch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CameraSwitch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D2B0B375B9DF4036E9990D /* Pods-CameraSwitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraSwitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CameraSwitch/Pods-CameraSwitch.debug.xcconfig"; sourceTree = "<group>"; };
 		C03AE163674D8379B83DE2D1 /* Pods-CameraSwitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraSwitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-CameraSwitch/Pods-CameraSwitch.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,7 +120,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FAD36891EC19EDE009859C9 /* CoreLocation.framework in Frameworks */,
 				B467EC610C60A90FA586FF4A /* libPods-CameraSwitch.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FAD364D1EC15AFC009859C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FAD36521EC15AFC009859C9 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +139,9 @@
 		0E00A1E6EDB4DFEF4D1220A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4FAD36881EC19EDE009859C9 /* CoreLocation.framework */,
 				6BEDE1F70C8BEBCA7F1A1883 /* libPods-CameraSwitch.a */,
+				4FAD36511EC15AFC009859C9 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -89,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				4F26B6831EBE82FF0056E7BF /* CameraSwitch */,
+				4FAD36531EC15AFC009859C9 /* CameraSwitchWidgets */,
 				4F26B6821EBE82FF0056E7BF /* Products */,
 				5C368656BC3BC15A1BF557DC /* Pods */,
 				0E00A1E6EDB4DFEF4D1220A6 /* Frameworks */,
@@ -99,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				4F26B6811EBE82FF0056E7BF /* CameraSwitch.app */,
+				4FAD36501EC15AFC009859C9 /* CameraSwitchWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,6 +169,7 @@
 		4F26B6831EBE82FF0056E7BF /* CameraSwitch */ = {
 			isa = PBXGroup;
 			children = (
+				4FAD366F1EC170C9009859C9 /* CameraSwitch.entitlements */,
 				4F26B6871EBE82FF0056E7BF /* AppDelegate.h */,
 				4F26B6881EBE82FF0056E7BF /* AppDelegate.m */,
 				4F26B69E1EBE87110056E7BF /* NestCameraManager.h */,
@@ -137,6 +201,8 @@
 				4F26B6B71EBEBF000056E7BF /* PlistManager.m */,
 				4F26B6B91EBEE38B0056E7BF /* BeaconRegionManager.h */,
 				4F26B6BA1EBEE38B0056E7BF /* BeaconRegionManager.m */,
+				4FAD366C1EC16855009859C9 /* WidgesDataManager.h */,
+				4FAD366D1EC16855009859C9 /* WidgesDataManager.m */,
 			);
 			path = CameraSwitch;
 			sourceTree = "<group>";
@@ -147,6 +213,24 @@
 				4F26B6851EBE82FF0056E7BF /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4FAD36531EC15AFC009859C9 /* CameraSwitchWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				4FAD366B1EC16790009859C9 /* CameraSwitchWidgets.entitlements */,
+				4FAD36541EC15AFC009859C9 /* TodayViewController.h */,
+				4FAD36551EC15AFC009859C9 /* TodayViewController.m */,
+				4FAD36571EC15AFD009859C9 /* MainInterface.storyboard */,
+				4FAD365A1EC15AFD009859C9 /* Info.plist */,
+				4FAD36621EC15B2F009859C9 /* CameraDataManager.h */,
+				4FAD36631EC15B2F009859C9 /* CameraDataManager.m */,
+				4FAD36651EC15B44009859C9 /* CameraData.h */,
+				4FAD36661EC15B44009859C9 /* CameraData.m */,
+				4FAD36681EC16170009859C9 /* CameraDataTableViewCell.h */,
+				4FAD36691EC16170009859C9 /* CameraDataTableViewCell.m */,
+			);
+			path = CameraSwitchWidgets;
 			sourceTree = "<group>";
 		};
 		5C368656BC3BC15A1BF557DC /* Pods */ = {
@@ -171,15 +255,34 @@
 				4F26B67F1EBE82FF0056E7BF /* Resources */,
 				FCB41F9F1A54C8127CF469C2 /* [CP] Embed Pods Frameworks */,
 				FD8DA20A15CF7914C97B9CA4 /* [CP] Copy Pods Resources */,
+				4FAD36911EC19F17009859C9 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4FAD36901EC19F17009859C9 /* PBXTargetDependency */,
 			);
 			name = CameraSwitch;
 			productName = CameraSwitch;
 			productReference = 4F26B6811EBE82FF0056E7BF /* CameraSwitch.app */;
 			productType = "com.apple.product-type.application";
+		};
+		4FAD364F1EC15AFC009859C9 /* CameraSwitchWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FAD36721EC18A5A009859C9 /* Build configuration list for PBXNativeTarget "CameraSwitchWidgets" */;
+			buildPhases = (
+				4FAD364C1EC15AFC009859C9 /* Sources */,
+				4FAD364D1EC15AFC009859C9 /* Frameworks */,
+				4FAD364E1EC15AFC009859C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CameraSwitchWidgets;
+			productName = CameraSwitchWidgets;
+			productReference = 4FAD36501EC15AFC009859C9 /* CameraSwitchWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -192,10 +295,22 @@
 				TargetAttributes = {
 					4F26B6801EBE82FF0056E7BF = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 2269Y262Z6;
+						DevelopmentTeam = JR9U4ZYUMM;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					4FAD364F1EC15AFC009859C9 = {
+						DevelopmentTeam = JR9U4ZYUMM;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
 						};
@@ -216,6 +331,7 @@
 			projectRoot = "";
 			targets = (
 				4F26B6801EBE82FF0056E7BF /* CameraSwitch */,
+				4FAD364F1EC15AFC009859C9 /* CameraSwitchWidgets */,
 			);
 		};
 /* End PBXProject section */
@@ -228,6 +344,14 @@
 				4F26B6971EBE82FF0056E7BF /* LaunchScreen.storyboard in Resources */,
 				4F26B6941EBE82FF0056E7BF /* Assets.xcassets in Resources */,
 				4F26B6921EBE82FF0056E7BF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FAD364E1EC15AFC009859C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FAD36591EC15AFD009859C9 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,10 +424,30 @@
 				4F26B6BB1EBEE38B0056E7BF /* BeaconRegionManager.m in Sources */,
 				4F26B6B41EBE87110056E7BF /* NestConnectViewController.m in Sources */,
 				4F26B6B51EBE87110056E7BF /* AccessToken.m in Sources */,
+				4FAD366E1EC16855009859C9 /* WidgesDataManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FAD364C1EC15AFC009859C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FAD36671EC15B44009859C9 /* CameraData.m in Sources */,
+				4FAD36641EC15B2F009859C9 /* CameraDataManager.m in Sources */,
+				4FAD366A1EC16170009859C9 /* CameraDataTableViewCell.m in Sources */,
+				4FAD36561EC15AFC009859C9 /* TodayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4FAD36901EC19F17009859C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FAD364F1EC15AFC009859C9 /* CameraSwitchWidgets */;
+			targetProxy = 4FAD368F1EC19F17009859C9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4F26B6901EBE82FF0056E7BF /* Main.storyboard */ = {
@@ -320,6 +464,14 @@
 				4F26B6961EBE82FF0056E7BF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4FAD36571EC15AFD009859C9 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FAD36581EC15AFD009859C9 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -420,10 +572,11 @@
 			baseConfigurationReference = B8D2B0B375B9DF4036E9990D /* Pods-CameraSwitch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2269Y262Z6;
+				CODE_SIGN_ENTITLEMENTS = CameraSwitch/CameraSwitch.entitlements;
+				DEVELOPMENT_TEAM = JR9U4ZYUMM;
 				INFOPLIST_FILE = CameraSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Catherine.CameraSwitch;
+				PRODUCT_BUNDLE_IDENTIFIER = Catherine.CustomCameraSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -433,11 +586,43 @@
 			baseConfigurationReference = C03AE163674D8379B83DE2D1 /* Pods-CameraSwitch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2269Y262Z6;
+				CODE_SIGN_ENTITLEMENTS = CameraSwitch/CameraSwitch.entitlements;
+				DEVELOPMENT_TEAM = JR9U4ZYUMM;
 				INFOPLIST_FILE = CameraSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Catherine.CameraSwitch;
+				PRODUCT_BUNDLE_IDENTIFIER = Catherine.CustomCameraSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4FAD36701EC18A5A009859C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CameraSwitchWidgets/CameraSwitchWidgets.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = JR9U4ZYUMM;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "$(SRCROOT)/CameraSwitchWidgets/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = Catherine.CustomCameraSwitch.CameraSwitchWidgets;
+				PRODUCT_NAME = CameraSwitchWidgets;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		4FAD36711EC18A5A009859C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CameraSwitchWidgets/CameraSwitchWidgets.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = JR9U4ZYUMM;
+				INFOPLIST_FILE = "$(SRCROOT)/CameraSwitchWidgets/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = Catherine.CustomCameraSwitch.CameraSwitchWidgets;
+				PRODUCT_NAME = CameraSwitchWidgets;
 			};
 			name = Release;
 		};
@@ -458,6 +643,15 @@
 			buildConfigurations = (
 				4F26B69C1EBE82FF0056E7BF /* Debug */,
 				4F26B69D1EBE82FF0056E7BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FAD36721EC18A5A009859C9 /* Build configuration list for PBXNativeTarget "CameraSwitchWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FAD36701EC18A5A009859C9 /* Debug */,
+				4FAD36711EC18A5A009859C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

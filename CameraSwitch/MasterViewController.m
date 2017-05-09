@@ -14,6 +14,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "PlistManager.h"
 #import "BeaconRegionManager.h"
+#import "WidgesDataManager.h"
 
 @interface MasterViewController ()
 
@@ -21,9 +22,11 @@
 @property NestStructureManager *nestStructureManager;
 @property NestCameraManager *nestCameraManager;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSTimer *widgetsTimer;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) PlistManager *plistManager;
 @property (nonatomic, strong) BeaconRegionManager *beaconRegionManager;
+@property (nonatomic, strong) WidgesDataManager *widgetsDataManager;
 @end
 
 @implementation MasterViewController
@@ -36,19 +39,37 @@
     
     self.timer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:1.0 target:self selector:@selector(presentConnectView) userInfo:nil repeats:NO];
     [[NSRunLoop currentRunLoop] addTimer: self.timer forMode: NSDefaultRunLoopMode];
+    
+    self.widgetsTimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(cameraSettingDidChanged:) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer: self.widgetsTimer forMode: NSDefaultRunLoopMode];
+    
     self.cameras = [[NSMutableDictionary alloc] init];
     
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager requestAlwaysAuthorization];
-    //self.locationManager.pausesLocationUpdatesAutomatically = NO;
+    self.locationManager.pausesLocationUpdatesAutomatically = NO;
     self.locationManager.distanceFilter = kCLLocationAccuracyThreeKilometers;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
     if ([CLLocationManager locationServicesEnabled]) {
         self.locationManager.allowsBackgroundLocationUpdates = YES;
         [self.locationManager startUpdatingLocation];
     }
+    self.plistManager = [[PlistManager alloc] init];
+    self.widgetsDataManager = [[WidgesDataManager alloc] initWithDelegate:self];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(cameraSettingDidChanged:)
+//                                                 name:NSUserDefaultsDidChangeNotification
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(cameraSettingDidChanged:)
+//                                                 name:NSUserDefaultsSizeLimitExceededNotification
+//                                               object:nil];
+}
 
+
+- (void)cameraSettingDidChanged:(NSNotification *)notif {
+    [self.widgetsDataManager cameraSettingDidChanged:notif];
 }
 
 - (void)presentConnectView {
@@ -62,7 +83,6 @@
         [self.nestStructureManager initialize];
         self.nestCameraManager = [[NestCameraManager alloc] init];
         [self.nestCameraManager setDelegate:self];
-        self.plistManager = [[PlistManager alloc] init];
         self.beaconRegionManager = [[BeaconRegionManager alloc] initWithCameras:_cameras];
         self.beaconDelegate = self.beaconRegionManager;
         [self.beaconRegionManager setDelegate:self];
@@ -202,6 +222,23 @@
     [self.plistManager saveSettingChange:dict forCameraId:cameraId];
 }
 
+- (void)updateWidgeData:(NSDictionary *)dict forCameraId:(NSString *)cameraId {
+    [self.widgetsDataManager updatingCameraSettingValue:dict cameraID:cameraId];
+}
+
+#pragma mark - WidgesDataManagerDelegate Methods
+
+- (void)widgesDataChanged:(NSDictionary *)cameraData {
+    for (NSString *cameraID in cameraData.allKeys) {
+        NSMutableDictionary *cameraSetting = [[NSMutableDictionary alloc] initWithDictionary:[self.plistManager readSettingForCameraId:cameraID]];
+        NSNumber *proximitySetting = [[cameraData objectForKey:cameraID] objectForKey:@"proximitySetting"];
+        [cameraSetting setValue:proximitySetting forKey:@"ProximitySegmentControl"];
+        [self.plistManager saveSettingChange:cameraSetting.copy forCameraId:cameraID];
+        [self.delegate proximitySettingChanged:[proximitySetting integerValue]];
+    }
+}
+
+
 #pragma mark - iBeaconRegionDelegate Methods
 
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray<CLBeacon *> *)beacons inRegion:(CLBeaconRegion *)region {
@@ -224,6 +261,10 @@
 
 - (void)enterBeaconRegion:(NSString *)beaconId proximity:(CLProximity)proximity {
     [self.beaconDelegate enterBeaconRegion:beaconId proximity:proximity];
+}
+
+- (void)exitBeaconRegion:(NSString *)beaconId {
+    [self.beaconDelegate exitBeaconRegion:beaconId];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(nonnull CLRegion *)region {

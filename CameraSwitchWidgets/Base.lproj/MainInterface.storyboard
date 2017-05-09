@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
+                        <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="176"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gvr-eZ-sO4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="176"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CameraSettingCell" id="jU9-gs-Kmb" customClass="CameraDataTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jU9-gs-Kmb" id="2f0-W3-m9Z">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBv-xn-yte">
+                                                    <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="man-gp-v85">
+                                                    <rect key="frame" x="121" y="7" width="191" height="29"/>
+                                                    <segments>
+                                                        <segment title="Far"/>
+                                                        <segment title="Near"/>
+                                                        <segment title="Instant"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="cameraProximitySettingValueChanged:" destination="jU9-gs-Kmb" eventType="valueChanged" id="AM1-kI-9Xf"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="man-gp-v85" firstAttribute="centerY" secondItem="2f0-W3-m9Z" secondAttribute="centerY" constant="-0.5" id="8Oc-Ce-9BH"/>
+                                                <constraint firstItem="eBv-xn-yte" firstAttribute="leading" secondItem="2f0-W3-m9Z" secondAttribute="leadingMargin" constant="5" id="Pru-vS-LJh"/>
+                                                <constraint firstItem="eBv-xn-yte" firstAttribute="centerY" secondItem="2f0-W3-m9Z" secondAttribute="centerY" id="VzS-9V-Kup"/>
+                                                <constraint firstAttribute="trailing" secondItem="man-gp-v85" secondAttribute="trailing" constant="8" id="jR8-b7-YUO"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cameraNameLabel" destination="eBv-xn-yte" id="244-Xn-czh"/>
+                                            <outlet property="cameraProximitySegmentControl" destination="man-gp-v85" id="v1V-iv-HI5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="gvr-eZ-sO4" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="DF2-43-dwP"/>
+                            <constraint firstItem="gvr-eZ-sO4" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="GV8-zd-JYL"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="gvr-eZ-sO4" secondAttribute="bottom" id="l6U-ux-Tyd"/>
+                            <constraint firstAttribute="trailing" secondItem="gvr-eZ-sO4" secondAttribute="trailing" id="xss-VT-jXJ"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="176"/>
+                    <connections>
+                        <outlet property="widgetsTableView" destination="gvr-eZ-sO4" id="etw-vt-udG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.59999999999999" y="95.352323838080963"/>
+        </scene>
+    </scenes>
+</document>

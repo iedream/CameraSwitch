@@ -56,6 +56,13 @@
     return plistData.copy;
 }
 
+- (NSDictionary *)getWidgetData {
+    NSMutableDictionary *widgetData = [[NSMutableDictionary alloc] init];
+    [widgetData setValue:_camera.cameraName forKey:@"name"];
+    [widgetData setValue:[NSNumber numberWithInteger:_proximitySegmentControl.selectedSegmentIndex] forKey:@"proximitySetting"];
+    return widgetData.copy;
+}
+
 - (void)populateSettingFromPlist {
     NSInteger proximitySetting = [_settings[@"ProximitySegmentControl"] integerValue];
     NSArray *iBeaconArray = _settings[@"BeaconArray"];
@@ -83,6 +90,9 @@
     }
 }
 
+- (void)proximitySettingChanged:(NSInteger)proximitySetting {
+    [_proximitySegmentControl setSelectedSegmentIndex:proximitySetting];
+}
 
 #pragma mark - Managing the detail item
 
@@ -125,6 +135,7 @@
     if (_proximitySegmentControl) {
         _proximitySegmentControl = (UISegmentedControl *)sender;
         [self.delegate savePlistSettings:[self getPlistData] forCameraId:_camera.cameraId];
+        [self.delegate updateWidgeData:[self getWidgetData] forCameraId:_camera.cameraId];
     }
 }
 

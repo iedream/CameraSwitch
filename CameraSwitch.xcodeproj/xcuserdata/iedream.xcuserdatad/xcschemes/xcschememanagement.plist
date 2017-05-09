@@ -9,10 +9,30 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>CameraSwitchWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>CameraSwitchWidgets.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>4F26B6801EBE82FF0056E7BF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4FAD364F1EC15AFC009859C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4FAD36761EC18B39009859C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

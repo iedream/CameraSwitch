@@ -14,12 +14,14 @@
 @protocol DetailDelegate <NSObject>
 - (void)addBeacon:(NSString *)beaconId;
 - (void)savePlistSettings:(NSDictionary *)dict forCameraId:(NSString *)cameraId;
+- (void)updateWidgeData:(NSDictionary *)dict forCameraId:(NSString *)cameraId;
 - (void)setCameraValue:(Camera *)camera;
 @end
 
 @protocol CameraValueDelegate <NSObject>
 
 - (void)cameraValuesChanged:(Camera *)camera;
+- (void)proximitySettingChanged:(NSInteger)camera;
 
 @end
 

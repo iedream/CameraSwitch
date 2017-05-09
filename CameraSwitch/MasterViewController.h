@@ -12,10 +12,11 @@
 #import <CoreLocation/CoreLocation.h>
 #import "DetailViewController.h"
 #import "BeaconRegionManager.h"
+#import "WidgesDataManager.h"
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController <DetailDelegate, NestStructureManagerDelegate, NestCameraManagerDelegate, CLLocationManagerDelegate, SetCameraDelegate, BeaconDelegate>
+@interface MasterViewController : UITableViewController <DetailDelegate, NestStructureManagerDelegate, NestCameraManagerDelegate, CLLocationManagerDelegate, SetCameraDelegate, BeaconDelegate, WidgesDataManagerDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property (nonatomic, weak) id <CameraValueDelegate>delegate;
