@@ -17,7 +17,7 @@
 #import "FirebaseManager.h"
 #import "NestAuthManager.h"
 
-#import <Firebase.h>
+#import <Firebase/Firebase.h>
 
 @interface FirebaseManager ()
 

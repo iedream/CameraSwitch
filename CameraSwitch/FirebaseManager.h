@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-#import <Firebase.h>
+#import <Firebase/Firebase.h>
 
 typedef void (^ SubscriptionBlock)(FDataSnapshot *snapshot);
 

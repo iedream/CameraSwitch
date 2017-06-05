@@ -33,7 +33,10 @@
 		4FAD366E1EC16855009859C9 /* WidgesDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAD366D1EC16855009859C9 /* WidgesDataManager.m */; };
 		4FAD36891EC19EDE009859C9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FAD36881EC19EDE009859C9 /* CoreLocation.framework */; };
 		4FAD368E1EC19F17009859C9 /* CameraSwitchWidgets.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4FAD36501EC15AFC009859C9 /* CameraSwitchWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B467EC610C60A90FA586FF4A /* libPods-CameraSwitch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BEDE1F70C8BEBCA7F1A1883 /* libPods-CameraSwitch.a */; };
+		4FD8CDF91EE4F5F000A5B901 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD8CDF81EE4F5F000A5B901 /* Firebase.framework */; };
+		4FD8CDFB1EE4F5FA00A5B901 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD8CDFA1EE4F5FA00A5B901 /* SystemConfiguration.framework */; };
+		4FD8CDFD1EE4F60100A5B901 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD8CDFC1EE4F60100A5B901 /* libc++.tbd */; };
+		4FD8CDFF1EE4F60C00A5B901 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD8CDFE1EE4F60C00A5B901 /* libicucore.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +113,10 @@
 		4FAD366D1EC16855009859C9 /* WidgesDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WidgesDataManager.m; sourceTree = "<group>"; };
 		4FAD366F1EC170C9009859C9 /* CameraSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CameraSwitch.entitlements; sourceTree = "<group>"; };
 		4FAD36881EC19EDE009859C9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		6BEDE1F70C8BEBCA7F1A1883 /* libPods-CameraSwitch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CameraSwitch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FD8CDF81EE4F5F000A5B901 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		4FD8CDFA1EE4F5FA00A5B901 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4FD8CDFC1EE4F60100A5B901 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		4FD8CDFE1EE4F60C00A5B901 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		B8D2B0B375B9DF4036E9990D /* Pods-CameraSwitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraSwitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CameraSwitch/Pods-CameraSwitch.debug.xcconfig"; sourceTree = "<group>"; };
 		C03AE163674D8379B83DE2D1 /* Pods-CameraSwitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CameraSwitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-CameraSwitch/Pods-CameraSwitch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,8 +126,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FD8CDFF1EE4F60C00A5B901 /* libicucore.tbd in Frameworks */,
+				4FD8CDFD1EE4F60100A5B901 /* libc++.tbd in Frameworks */,
+				4FD8CDFB1EE4F5FA00A5B901 /* SystemConfiguration.framework in Frameworks */,
 				4FAD36891EC19EDE009859C9 /* CoreLocation.framework in Frameworks */,
-				B467EC610C60A90FA586FF4A /* libPods-CameraSwitch.a in Frameworks */,
+				4FD8CDF91EE4F5F000A5B901 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +148,11 @@
 		0E00A1E6EDB4DFEF4D1220A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4FD8CDFE1EE4F60C00A5B901 /* libicucore.tbd */,
+				4FD8CDFC1EE4F60100A5B901 /* libc++.tbd */,
+				4FD8CDFA1EE4F5FA00A5B901 /* SystemConfiguration.framework */,
+				4FD8CDF81EE4F5F000A5B901 /* Firebase.framework */,
 				4FAD36881EC19EDE009859C9 /* CoreLocation.framework */,
-				6BEDE1F70C8BEBCA7F1A1883 /* libPods-CameraSwitch.a */,
 				4FAD36511EC15AFC009859C9 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -249,12 +261,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F26B69B1EBE82FF0056E7BF /* Build configuration list for PBXNativeTarget "CameraSwitch" */;
 			buildPhases = (
-				8C21F0DA26B0D26CD440CA4E /* [CP] Check Pods Manifest.lock */,
 				4F26B67D1EBE82FF0056E7BF /* Sources */,
 				4F26B67E1EBE82FF0056E7BF /* Frameworks */,
 				4F26B67F1EBE82FF0056E7BF /* Resources */,
-				FCB41F9F1A54C8127CF469C2 /* [CP] Embed Pods Frameworks */,
-				FD8DA20A15CF7914C97B9CA4 /* [CP] Copy Pods Resources */,
 				4FAD36911EC19F17009859C9 /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -356,54 +365,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8C21F0DA26B0D26CD440CA4E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FCB41F9F1A54C8127CF469C2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CameraSwitch/Pods-CameraSwitch-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FD8DA20A15CF7914C97B9CA4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CameraSwitch/Pods-CameraSwitch-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4F26B67D1EBE82FF0056E7BF /* Sources */ = {
@@ -574,8 +535,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CameraSwitch/CameraSwitch.entitlements;
 				DEVELOPMENT_TEAM = JR9U4ZYUMM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CameraSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = Catherine.CustomCameraSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -588,8 +554,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CameraSwitch/CameraSwitch.entitlements;
 				DEVELOPMENT_TEAM = JR9U4ZYUMM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CameraSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = Catherine.CustomCameraSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
